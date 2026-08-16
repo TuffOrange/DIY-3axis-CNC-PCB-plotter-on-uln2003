@@ -96,6 +96,7 @@ Single-layer ink deposition leaves micro-porosities through which the chemical e
 
 
    
-![System Overview](5190482864032651459_121.jpg)
+![System Overview](<img width="1280" height="720" alt="5190482864032651459_121" src="https://github.com/user-attachments/assets/dd708be5-e8d1-4708-95b3-e325943f31bb" />
+5190482864032651459_121.jpg)
 
 Enjoy!)
