@@ -93,3 +93,9 @@ Single-layer ink deposition leaves micro-porosities through which the chemical e
 3. Manually align the marker tip with the designated lower-left margin of the copper plate.
 4. Execute the serial command **`G92 X0 Y0`** to set the absolute software datum.
 5. Energize the 12V power supply and select **Play** to begin execution.
+
+
+   
+https://github.com/TuffOrange/DIY-3axis-CNC-PCB-plotter-on-uln2003/blob/main/Media/5190482864032651460_121.jpg
+
+Enjoy!)
