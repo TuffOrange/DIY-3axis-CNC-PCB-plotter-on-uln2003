@@ -1,20 +1,17 @@
 #include <Arduino.h>
 
-// Конфигурация пинов для трех плат ULN2003
-const int xPins[] = {2, 3, 4, 5};     // IN1, IN2, IN3, IN4 для Оси X
-const int yPins[] = {A0, A1, A2, A3}; // IN1, IN2, IN3, IN4 для Оси Y
-const int zPins[] = {9, 10, 11, 12};  // IN1, IN2, IN3, IN4 для Оси Z
+const int xPins[] = {2, 3, 4, 5};     // IN1, IN2, IN3, IN4  X
+const int yPins[] = {A0, A1, A2, A3}; // IN1, IN2, IN3, IN4  Y
+const int zPins[] = {9, 10, 11, 12};  // IN1, IN2, IN3, IN4  Z
 
-// Стандартная 4-шаговая силовая последовательность (Full-step)
+
 const uint8_t stepPhases[] = { 0b0001, 0b0010, 0b0100, 0b1000 };
 int xStepIdx = 0; int yStepIdx = 0; int zStepIdx = 0;
 
 bool absoluteMode = true; 
 float currentX = 0; float currentY = 0;       
-const float stepsPerMm = 43.478; // Ваша откалиброванная линейкой точность
+const float stepsPerMm = 43.478; 
 
-// Сколько шагов должен сделать третий мотор, чтобы полностью поднять/опустить маркер
-// 200 шагов — это примерно половина оборота вала мотора. Можете изменить под ваш рельс!
 const int zStepsTravel = 238; 
 
 void makeStepX(bool dir) {
@@ -51,34 +48,34 @@ void processSingleCommand(String cmd) {
   if (cmd.indexOf("G91") != -1) absoluteMode = false;
   if (cmd.startsWith("G92")) { currentX = 0; currentY = 0; return; }
 
-  // МАРКЕР ВНИЗ (Команда M3 или сигнал мощности лазера S больше 0)
+
   bool isM3 = (cmd.indexOf("M3") != -1 || cmd.indexOf("M03") != -1);
   int sIdx = cmd.indexOf('S');
   bool isSOn = (sIdx != -1 && cmd.substring(sIdx + 1).toFloat() > 0);
 
   if (isM3 || isSOn) {
     for (int s = 0; s < zStepsTravel; s++) {
-      makeStepZ(true); // Крутим ось Z вперед (опускаем маркер)
+      makeStepZ(true); 
       delay(3);
     }
-    for (int i = 0; i < 4; i++) digitalWrite(zPins[i], LOW); // Отключаем ток, гасим нагрев
+    for (int i = 0; i < 4; i++) digitalWrite(zPins[i], LOW); 
     return;
   }
 
-  // МАРКЕР ВВЕРХ (Команда M5 или сигнал мощности лазера S0)
+
   bool isM5 = (cmd.indexOf("M5") != -1 || cmd.indexOf("M05") != -1);
   bool isSOff = (sIdx != -1 && cmd.substring(sIdx + 1).toFloat() == 0);
 
   if (isM5 || isSOff) {
     for (int s = 0; s < zStepsTravel; s++) {
-      makeStepZ(false); // Крутим ось Z назад (поднимаем маркер)
+      makeStepZ(false); 
       delay(3);
     }
-    for (int i = 0; i < 4; i++) digitalWrite(zPins[i], LOW); // Отключаем ток
+    for (int i = 0; i < 4; i++) digitalWrite(zPins[i], LOW); 
     return;
   }
 
-  // ДВИЖЕНИЕ ОСЕЙ X и Y
+
   if (cmd.startsWith("G1") || cmd.startsWith("G0")) {
     float rawX = currentX; float rawY = currentY;
     bool hasX = false; bool hasY = false;
@@ -100,7 +97,7 @@ void processSingleCommand(String cmd) {
       delay(3); 
     }
 
-    // Охлаждение: гасим обмотки X и Y после финиша линии
+
     for (int i = 0; i < 4; i++) {
       digitalWrite(xPins[i], LOW);
       digitalWrite(yPins[i], LOW);
