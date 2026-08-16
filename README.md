@@ -5,7 +5,8 @@ This repository contains the complete documentation, source code, and design spe
 The structural mechanics of this project are based on the design by maker101io (MakerWorld), with a major engineering modification implemented on the vertical Z-axis. The standard hobby servo mechanism was replaced with a rigid rack-and-pinion assembly driven by a dedicated stepper motor, adapted from the BadgerJed design on Thingiverse (Thing 4672712).
 
 ---
-
+### Video Demonstration
+[Watch the CNC Plotter in action](Media/5190482863572692207.mp4)
 ## Bill of Materials (BOM) and Cost Estimation
 
 The system relies on accessible, non-proprietary components commonly found in entry-level automation kits, eliminating the need for expensive dedicated stepper drivers (such as A4988 or DRV8825).
