@@ -96,6 +96,6 @@ Single-layer ink deposition leaves micro-porosities through which the chemical e
 
 
    
-https://github.com/TuffOrange/DIY-3axis-CNC-PCB-plotter-on-uln2003/blob/main/Media/5190482864032651460_121.jpg
+![System Overview](5190482864032651459_121.jpg)
 
 Enjoy!)
