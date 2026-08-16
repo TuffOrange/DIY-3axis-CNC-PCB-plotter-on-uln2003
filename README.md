@@ -6,7 +6,10 @@ The structural mechanics of this project are based on the design by maker101io (
 
 ---
 ### Video Demonstration
-[Watch the CNC Plotter in action](Media/5190482863572692207.mp4)
+
+https://github.com/user-attachments/assets/64eacadb-5881-44ae-a8dd-37bf3593e7bc
+
+
 ## Bill of Materials (BOM) and Cost Estimation
 
 The system relies on accessible, non-proprietary components commonly found in entry-level automation kits, eliminating the need for expensive dedicated stepper drivers (such as A4988 or DRV8825).
